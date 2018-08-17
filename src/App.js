@@ -5,8 +5,8 @@ import gql from 'graphql-tag'
 import { graphql, compose } from 'react-apollo'
 import uuidV4 from 'uuid/v4'
 
-// import { buildSubscription } from 'aws-appsync'
-// import { graphqlMutation } from 'aws-appsync-react'
+import { graphqlMutation } from 'aws-appsync-react'
+import { buildSubscription } from 'aws-appsync'
 
 const ListPets = gql`
   query {
@@ -46,15 +46,15 @@ class App extends Component {
   state = {
     name: '', description: ''
   }
+  componentDidMount() {
+    // this.props.subcribeToMore(
+    //   buildSubscription(PetSubscription, ListPets)
+    // )
+  }
   onChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
-  }
-  componentDidMount() {
-    this.props.data.subscribeToMore(
-      buildSubscription(PetSubscription, ListPets)
-    )
   }
   createPet = () => {
     const pet = this.state
@@ -107,13 +107,13 @@ export default compose(
       fetchPolicy: 'cache-and-network'
     },
     props: props => {
-      console.log('props:', props)
       return {
         pets: props.data.listPets ? props.data.listPets.items : [],
         data: props.data
       }
     }
   }),
+  // graphqlMutation(CreatePet, ListPets, 'Pet'),
   graphql(CreatePet, {
     options: {
       update: (dataProxy, { data: { createPet } }) => {
