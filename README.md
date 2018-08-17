@@ -4,9 +4,9 @@ To get started, first go to the [AWS AppSync Console](https://console.aws.amazon
 
 ```graphql
 type Pet {
-	id: ID!
-	name: String!
-	description: String
+  id: ID!
+  name: String!
+  description: String
 }
 ```
 
