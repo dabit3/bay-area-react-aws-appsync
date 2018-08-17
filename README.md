@@ -12,7 +12,7 @@ type Pet {
 
 Once the schema has been created, click the __Create Resources__ button to create the necessary resources.
 
-Next, click on the API name in the left menu, scroll down, click __Web (Rect)__ & download the AppSync.js config file. Save this file in the src folder of your project.
+Next, click on the API name in the left menu, scroll down, click __Web (React)__ & download the AppSync.js config file. Save this file in the src folder of your project.
 
 Next, download the React project:
 
